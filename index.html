@@ -2,28 +2,56 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Bảng Màu Cua Quang</title>
+    <title>Bảng Màu Của Quang</title>
     <style>
-        body    {font-family: Arial, sans-serif;}
-        table   {width: 100%;
-                 border-collapse: collapse;}
-        th, td  {padding: 10px;
-                 border: 1px solid #ddd;}
-        th      {background-color: #f2f2f2;}
-        .red    {background-color: red;
-                 color: white;}
-        .green  {background-color: green;
-                 color: white;}
-        .blue   {background-color: blue;
-                 color: white;}
-        .yellow {background-color: yellow;
-                 color: black;
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://cdn.xtmobile.vn/vnt_upload/news/01_2024/11/hinh-nen-dien-thoai-de-thuong-cho-nu-3-xtmobile.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: black;
+        }
+
+        .red { background-color: red; color: white; }
+        .green { background-color: green; color: white; }
+        .blue { background-color: blue; color: white; }
+        .yellow { background-color: yellow; color: black; }
+
+        #searchBox {
+            width: 50%;
+            padding: 10px;
+            margin: 10px auto;
+            display: block;
+            font-size: 16px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
+
     <h1>Bảng Màu Quang 12a4</h1>
-    <table>
+
+    <input type="text" id="searchBox" placeholder="Tìm màu (Đỏ, Xanh Lá, Xanh Dương, Vàng)...">
+    
+    <table id="colorTable">
         <thead>
             <tr>
                 <th>Màu</th>
@@ -49,6 +77,22 @@
             </tr>
         </tbody>
     </table>
-    <p>Quang 12a4</p>
+
+    <script>
+        document.getElementById('searchBox').addEventListener('keyup', function() {
+            let filter = this.value.toLowerCase();
+            let rows = document.querySelectorAll('#colorTable tbody tr');
+
+            rows.forEach(row => {
+                let colorName = row.cells[0].innerText.toLowerCase();
+                if (colorName.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
